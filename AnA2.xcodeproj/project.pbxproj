@@ -37,20 +37,20 @@
 		CB7E5CFF149FCFAF00A8C6E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CB7E5D01149FCFAF00A8C6E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CB7E5D03149FCFAF00A8C6E4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		CB7E5D07149FCFAF00A8C6E4 /* AnA2-Info.plist */ = {isa = PBXFileReference; path = "AnA2-Info.plist"; sourceTree = "<group>"; };
+		CB7E5D07149FCFAF00A8C6E4 /* AnA2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AnA2-Info.plist"; sourceTree = "<group>"; };
 		CB7E5D09149FCFAF00A8C6E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CB7E5D0B149FCFAF00A8C6E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CB7E5D0D149FCFAF00A8C6E4 /* AnA2-Prefix.pch */ = {isa = PBXFileReference; path = "AnA2-Prefix.pch"; sourceTree = "<group>"; };
-		CB7E5D0E149FCFAF00A8C6E4 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		CB7E5D0D149FCFAF00A8C6E4 /* AnA2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AnA2-Prefix.pch"; sourceTree = "<group>"; };
+		CB7E5D0E149FCFAF00A8C6E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CB7E5D0F149FCFAF00A8C6E4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CB7E5D11149FCFAF00A8C6E4 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		CB7E5D11149FCFAF00A8C6E4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CB7E5D12149FCFAF00A8C6E4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CB7E5D15149FCFAF00A8C6E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		CB7E5D1C149FCFAF00A8C6E4 /* AnA2Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnA2Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7E5D1D149FCFAF00A8C6E4 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		CB7E5D25149FCFAF00A8C6E4 /* AnA2Tests-Info.plist */ = {isa = PBXFileReference; path = "AnA2Tests-Info.plist"; sourceTree = "<group>"; };
+		CB7E5D25149FCFAF00A8C6E4 /* AnA2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AnA2Tests-Info.plist"; sourceTree = "<group>"; };
 		CB7E5D27149FCFAF00A8C6E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CB7E5D29149FCFAF00A8C6E4 /* AnA2Tests.h */ = {isa = PBXFileReference; path = AnA2Tests.h; sourceTree = "<group>"; };
+		CB7E5D29149FCFAF00A8C6E4 /* AnA2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnA2Tests.h; sourceTree = "<group>"; };
 		CB7E5D2A149FCFAF00A8C6E4 /* AnA2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnA2Tests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
