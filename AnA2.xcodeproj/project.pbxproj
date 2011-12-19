@@ -431,6 +431,7 @@
 				CB7E5D30149FCFAF00A8C6E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB7E5D31149FCFAF00A8C6E4 /* Build configuration list for PBXNativeTarget "AnA2Tests" */ = {
 			isa = XCConfigurationList;
@@ -439,6 +440,7 @@
 				CB7E5D33149FCFAF00A8C6E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
