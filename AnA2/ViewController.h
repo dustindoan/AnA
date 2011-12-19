@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    UIButton* tvButton;
+}
+
+@property (nonatomic, retain) IBOutlet UIButton *tvButton;
+
+-(IBAction) stuff;
 
 @end
