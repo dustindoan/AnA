@@ -10,12 +10,25 @@
 
 @implementation ViewController
 
-@synthesize tvButton;
+@synthesize tvButton, nextButton, previousButton;
+@synthesize factionLabel;
+@synthesize scrollView;
+@synthesize pageControl;
+
+bool pageControlBeingUsed = NO;
 
 -(IBAction) stuff {
     [self.tvButton setTitle:@"Done!" forState:UIControlStateNormal];
     self.tvButton.enabled = false;
     //    [tvOut];
+}
+
+-(IBAction) doNext {
+    factionLabel.text = @"Next";
+}
+
+-(IBAction) doPrevious {
+    factionLabel.text = @"Prev";
 }
 
 //-(void) tvOut {change
@@ -48,6 +61,15 @@
 //    }
 //}
 
+- (IBAction)changePage {
+    // update the scroll view to the appropriate page
+    CGRect frame;
+    frame.origin.x = self.scrollView.frame.size.width * self.pageControl.currentPage;
+    frame.origin.y = 0;
+    frame.size = self.scrollView.frame.size;
+    [self.scrollView scrollRectToVisible:frame animated:YES];
+    pageControlBeingUsed = YES;
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -61,6 +83,22 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    pageControlBeingUsed = NO;
+    
+    NSArray *colors = [NSArray arrayWithObjects:[UIColor redColor], [UIColor greenColor], [UIColor blueColor], nil];
+    for (int i = 0; i < colors.count; i++) {
+        CGRect frame;
+        frame.origin.x = self.scrollView.frame.size.width * i;
+        frame.origin.y = 0;
+        frame.size = self.scrollView.frame.size;
+        
+        UIView *subview = [[UIView alloc] initWithFrame:frame];
+        subview.backgroundColor = [colors objectAtIndex:i];
+        [self.scrollView addSubview:subview];
+    }
+    
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * colors.count, self.scrollView.frame.size.height);
+
 }
 
 - (void)viewDidUnload
@@ -96,4 +134,27 @@
     return YES;
 }
 
+/*
+ * ScrollDelegate Stuffs
+ */
+
+- (void)scrollViewDidScroll:(UIScrollView *)sender {
+    // Update the page when more than 50% of the previous/next page is visible
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    int x = self.scrollView.contentOffset.x;
+    int page = floor((x - pageWidth / 2) / pageWidth);
+    page = page + 1;
+    self.pageControl.currentPage = page;
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    pageControlBeingUsed = NO;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    pageControlBeingUsed = NO;
+}
+
 @end
+
+
