@@ -11,7 +11,7 @@
 
 @implementation ViewController
 
-@synthesize tvButton, nextButton, previousButton;
+@synthesize tvButton;
 @synthesize factionLabel;
 @synthesize scrollView;
 @synthesize pageControl;

@@ -11,9 +11,6 @@
 @interface ViewController : UIViewController {
     UILabel *factionLabel;
     
-    UIButton *nextButton;
-    UIButton *previousButton;
-    
     UIButton* tvButton;
     UIPageControl* pageControl;
     
@@ -23,8 +20,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *factionLabel;
 
 @property (nonatomic, retain) IBOutlet UIButton *tvButton;
-@property (nonatomic, retain) IBOutlet UIButton *nextButton;
-@property (nonatomic, retain) IBOutlet UIButton *previousButton;
 
 @property (nonatomic, retain) IBOutlet UIScrollView* scrollView;
 @property (nonatomic, retain) IBOutlet UIPageControl* pageControl;
