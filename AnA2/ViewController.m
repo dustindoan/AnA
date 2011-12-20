@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "FactionViewController.h"
 
 @implementation ViewController
 
@@ -85,20 +86,21 @@ bool pageControlBeingUsed = NO;
 	// Do any additional setup after loading the view, typically from a nib.
     pageControlBeingUsed = NO;
     
-    NSArray *colors = [NSArray arrayWithObjects:[UIColor redColor], [UIColor greenColor], [UIColor blueColor], nil];
-    for (int i = 0; i < colors.count; i++) {
+    NSArray *factions = [NSArray arrayWithObjects:@"Russia", @"Germany", @"Great Britain", @"Japan", @"USA", nil];
+    
+    for (int i = 0; i < factions.count; i++) {
         CGRect frame;
         frame.origin.x = self.scrollView.frame.size.width * i;
         frame.origin.y = 0;
         frame.size = self.scrollView.frame.size;
         
-        UIView *subview = [[UIView alloc] initWithFrame:frame];
-        subview.backgroundColor = [colors objectAtIndex:i];
-        [self.scrollView addSubview:subview];
+        FactionViewController *viewController = [[FactionViewController alloc] initWithFaction:[factions objectAtIndex: i]];
+        viewController.view.frame = frame;
+        [self.scrollView addSubview:viewController.view];
     }
     
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * colors.count, self.scrollView.frame.size.height);
-
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * factions.count, self.scrollView.frame.size.height);
+    self.pageControl.numberOfPages = factions.count;
 }
 
 - (void)viewDidUnload
