@@ -7,15 +7,29 @@
 //
 
 #import "ViewController.h"
+#import "FactionViewController.h"
 
 @implementation ViewController
 
 @synthesize tvButton;
+@synthesize factionLabel;
+@synthesize scrollView;
+@synthesize pageControl;
+
+bool pageControlBeingUsed = NO;
 
 -(IBAction) stuff {
     [self.tvButton setTitle:@"Done!" forState:UIControlStateNormal];
     self.tvButton.enabled = false;
     //    [tvOut];
+}
+
+-(IBAction) doNext {
+    factionLabel.text = @"Next";
+}
+
+-(IBAction) doPrevious {
+    factionLabel.text = @"Prev";
 }
 
 //-(void) tvOut {change
@@ -48,6 +62,15 @@
 //    }
 //}
 
+- (IBAction)changePage {
+    // update the scroll view to the appropriate page
+    CGRect frame;
+    frame.origin.x = self.scrollView.frame.size.width * self.pageControl.currentPage;
+    frame.origin.y = 0;
+    frame.size = self.scrollView.frame.size;
+    [self.scrollView scrollRectToVisible:frame animated:YES];
+    pageControlBeingUsed = YES;
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -61,6 +84,23 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    pageControlBeingUsed = NO;
+    
+    NSArray *factions = [NSArray arrayWithObjects:@"Russia", @"Germany", @"Great Britain", @"Japan", @"USA", nil];
+    
+    for (int i = 0; i < factions.count; i++) {
+        CGRect frame;
+        frame.origin.x = self.scrollView.frame.size.width * i;
+        frame.origin.y = 0;
+        frame.size = self.scrollView.frame.size;
+        
+        FactionViewController *viewController = [[FactionViewController alloc] initWithFaction:[factions objectAtIndex: i]];
+        viewController.view.frame = frame;
+        [self.scrollView addSubview:viewController.view];
+    }
+    
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * factions.count, self.scrollView.frame.size.height);
+    self.pageControl.numberOfPages = factions.count;
 }
 
 - (void)viewDidUnload
@@ -96,4 +136,27 @@
     return YES;
 }
 
+/*
+ * ScrollDelegate Stuffs
+ */
+
+- (void)scrollViewDidScroll:(UIScrollView *)sender {
+    // Update the page when more than 50% of the previous/next page is visible
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    int x = self.scrollView.contentOffset.x;
+    int page = floor((x - pageWidth / 2) / pageWidth);
+    page = page + 1;
+    self.pageControl.currentPage = page;
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    pageControlBeingUsed = NO;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    pageControlBeingUsed = NO;
+}
+
 @end
+
+

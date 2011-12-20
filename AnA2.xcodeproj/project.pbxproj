@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F778C3E14A01D7400BBA0AA /* FactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F778C3C14A01D7400BBA0AA /* FactionViewController.m */; };
+		8F778C3F14A01D7400BBA0AA /* FactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F778C3D14A01D7400BBA0AA /* FactionViewController.xib */; };
 		CB7E5D00149FCFAF00A8C6E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7E5CFF149FCFAF00A8C6E4 /* UIKit.framework */; };
 		CB7E5D02149FCFAF00A8C6E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7E5D01149FCFAF00A8C6E4 /* Foundation.framework */; };
 		CB7E5D04149FCFAF00A8C6E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7E5D03149FCFAF00A8C6E4 /* CoreGraphics.framework */; };
@@ -33,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F778C3B14A01D7400BBA0AA /* FactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactionViewController.h; sourceTree = "<group>"; };
+		8F778C3C14A01D7400BBA0AA /* FactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactionViewController.m; sourceTree = "<group>"; };
+		8F778C3D14A01D7400BBA0AA /* FactionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FactionViewController.xib; sourceTree = "<group>"; };
 		CB7E5CFB149FCFAF00A8C6E4 /* AnA2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnA2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7E5CFF149FCFAF00A8C6E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CB7E5D01149FCFAF00A8C6E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -111,6 +116,9 @@
 		CB7E5D05149FCFAF00A8C6E4 /* AnA2 */ = {
 			isa = PBXGroup;
 			children = (
+				8F778C3B14A01D7400BBA0AA /* FactionViewController.h */,
+				8F778C3C14A01D7400BBA0AA /* FactionViewController.m */,
+				8F778C3D14A01D7400BBA0AA /* FactionViewController.xib */,
 				CB7E5D0E149FCFAF00A8C6E4 /* AppDelegate.h */,
 				CB7E5D0F149FCFAF00A8C6E4 /* AppDelegate.m */,
 				CB7E5D11149FCFAF00A8C6E4 /* ViewController.h */,
@@ -223,6 +231,7 @@
 			files = (
 				CB7E5D0A149FCFAF00A8C6E4 /* InfoPlist.strings in Resources */,
 				CB7E5D16149FCFAF00A8C6E4 /* ViewController.xib in Resources */,
+				8F778C3F14A01D7400BBA0AA /* FactionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +269,7 @@
 				CB7E5D0C149FCFAF00A8C6E4 /* main.m in Sources */,
 				CB7E5D10149FCFAF00A8C6E4 /* AppDelegate.m in Sources */,
 				CB7E5D13149FCFAF00A8C6E4 /* ViewController.m in Sources */,
+				8F778C3E14A01D7400BBA0AA /* FactionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +441,7 @@
 				CB7E5D30149FCFAF00A8C6E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB7E5D31149FCFAF00A8C6E4 /* Build configuration list for PBXNativeTarget "AnA2Tests" */ = {
 			isa = XCConfigurationList;
@@ -439,6 +450,7 @@
 				CB7E5D33149FCFAF00A8C6E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
