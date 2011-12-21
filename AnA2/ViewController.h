@@ -25,8 +25,6 @@
 @property (nonatomic, retain) IBOutlet UIPageControl* pageControl;
 
 -(IBAction) tvSwitched;
--(IBAction) doNext;
--(IBAction) doPrevious;
 -(IBAction) changePage;
 
 -(void) tvOut;
