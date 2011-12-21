@@ -25,8 +25,6 @@
 @property (nonatomic, retain) IBOutlet UIPageControl* pageControl;
 
 -(IBAction) stuff;
--(IBAction) doNext;
--(IBAction) doPrevious;
 -(IBAction) changePage;
 
 @end
