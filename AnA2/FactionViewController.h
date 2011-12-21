@@ -11,13 +11,17 @@
 @interface FactionViewController : UIViewController {
     UILabel *factionNameLabel;
     UIImageView *factionBackgroundImageView;
-    
+    UIImageView *factionIcon;
+
     NSString *mFactionName;
+    NSString *mImageName;
+
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *factionNameLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *factionBackgroundImageView;
+@property (nonatomic, retain) IBOutlet UIImageView *factionIcon;
 
-- (id)initWithFaction:(NSString *)factionName;
+- (id)initWithFaction:(NSString *)factionName imageName:(NSString *)imageName;
 
 @end
