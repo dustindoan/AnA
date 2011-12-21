@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8F4D8C3A14A153B700961D9F /* england_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4D8C3414A153B700961D9F /* england_icon.png */; };
-		8F4D8C3B14A153B700961D9F /* germany_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4D8C3514A153B700961D9F /* germany_icon.png */; };
-		8F4D8C3C14A153B700961D9F /* italy_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4D8C3614A153B700961D9F /* italy_icon.png */; };
-		8F4D8C3D14A153B700961D9F /* japan_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4D8C3714A153B700961D9F /* japan_icon.png */; };
-		8F4D8C3E14A153B700961D9F /* russia_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4D8C3814A153B700961D9F /* russia_icon.png */; };
-		8F4D8C3F14A153B700961D9F /* usa_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4D8C3914A153B700961D9F /* usa_icon.png */; };
 		8F778C3E14A01D7400BBA0AA /* FactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F778C3C14A01D7400BBA0AA /* FactionViewController.m */; };
 		8F778C3F14A01D7400BBA0AA /* FactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F778C3D14A01D7400BBA0AA /* FactionViewController.xib */; };
+		8FB34AF014A2816E005129B9 /* england_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB34AEA14A2816E005129B9 /* england_icon.png */; };
+		8FB34AF114A2816E005129B9 /* germany_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB34AEB14A2816E005129B9 /* germany_icon.png */; };
+		8FB34AF214A2816E005129B9 /* italy_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB34AEC14A2816E005129B9 /* italy_icon.png */; };
+		8FB34AF314A2816E005129B9 /* japan_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB34AED14A2816E005129B9 /* japan_icon.png */; };
+		8FB34AF414A2816E005129B9 /* russia_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB34AEE14A2816E005129B9 /* russia_icon.png */; };
+		8FB34AF514A2816E005129B9 /* usa_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB34AEF14A2816E005129B9 /* usa_icon.png */; };
 		CB33EDB214A264BF0011C5B1 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = CB33EDAF14A264BF0011C5B1 /* map.png */; };
 		CB33EDB314A264BF0011C5B1 /* TVOutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CB33EDB114A264BF0011C5B1 /* TVOutManager.m */; };
 		CB7E5D00149FCFAF00A8C6E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7E5CFF149FCFAF00A8C6E4 /* UIKit.framework */; };
@@ -43,15 +43,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8F4D8C3414A153B700961D9F /* england_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = england_icon.png; sourceTree = "<group>"; };
-		8F4D8C3514A153B700961D9F /* germany_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = germany_icon.png; sourceTree = "<group>"; };
-		8F4D8C3614A153B700961D9F /* italy_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = italy_icon.png; sourceTree = "<group>"; };
-		8F4D8C3714A153B700961D9F /* japan_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = japan_icon.png; sourceTree = "<group>"; };
-		8F4D8C3814A153B700961D9F /* russia_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = russia_icon.png; sourceTree = "<group>"; };
-		8F4D8C3914A153B700961D9F /* usa_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usa_icon.png; sourceTree = "<group>"; };
 		8F778C3B14A01D7400BBA0AA /* FactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactionViewController.h; sourceTree = "<group>"; };
 		8F778C3C14A01D7400BBA0AA /* FactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactionViewController.m; sourceTree = "<group>"; };
 		8F778C3D14A01D7400BBA0AA /* FactionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FactionViewController.xib; sourceTree = "<group>"; };
+		8FB34AEA14A2816E005129B9 /* england_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = england_icon.png; sourceTree = "<group>"; };
+		8FB34AEB14A2816E005129B9 /* germany_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = germany_icon.png; sourceTree = "<group>"; };
+		8FB34AEC14A2816E005129B9 /* italy_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = italy_icon.png; sourceTree = "<group>"; };
+		8FB34AED14A2816E005129B9 /* japan_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = japan_icon.png; sourceTree = "<group>"; };
+		8FB34AEE14A2816E005129B9 /* russia_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = russia_icon.png; sourceTree = "<group>"; };
+		8FB34AEF14A2816E005129B9 /* usa_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usa_icon.png; sourceTree = "<group>"; };
 		CB33EDAF14A264BF0011C5B1 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		CB33EDB014A264BF0011C5B1 /* TVOutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVOutManager.h; sourceTree = "<group>"; };
 		CB33EDB114A264BF0011C5B1 /* TVOutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVOutManager.m; sourceTree = "<group>"; };
@@ -100,6 +100,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8FB34AF714A28174005129B9 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				8FB34AEA14A2816E005129B9 /* england_icon.png */,
+				8FB34AEB14A2816E005129B9 /* germany_icon.png */,
+				8FB34AEC14A2816E005129B9 /* italy_icon.png */,
+				8FB34AED14A2816E005129B9 /* japan_icon.png */,
+				8FB34AEE14A2816E005129B9 /* russia_icon.png */,
+				8FB34AEF14A2816E005129B9 /* usa_icon.png */,
+			);
+			name = images;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		CB33EDB514A264C70011C5B1 /* TVOut */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,10 +156,10 @@
 		CB7E5D05149FCFAF00A8C6E4 /* AnA2 */ = {
 			isa = PBXGroup;
 			children = (
+				8FB34AF714A28174005129B9 /* images */,
 				CB33EDB514A264C70011C5B1 /* TVOut */,
 				CB33EDAF14A264BF0011C5B1 /* map.png */,
 				8F778C3B14A01D7400BBA0AA /* FactionViewController.h */,
-				8F4D8C4014A1548900961D9F /* images */,
 				8F778C3C14A01D7400BBA0AA /* FactionViewController.m */,
 				8F778C3D14A01D7400BBA0AA /* FactionViewController.xib */,
 				CB7E5D0E149FCFAF00A8C6E4 /* AppDelegate.h */,
@@ -262,6 +276,12 @@
 				CB7E5D16149FCFAF00A8C6E4 /* ViewController.xib in Resources */,
 				8F778C3F14A01D7400BBA0AA /* FactionViewController.xib in Resources */,
 				CB33EDB214A264BF0011C5B1 /* map.png in Resources */,
+				8FB34AF014A2816E005129B9 /* england_icon.png in Resources */,
+				8FB34AF114A2816E005129B9 /* germany_icon.png in Resources */,
+				8FB34AF214A2816E005129B9 /* italy_icon.png in Resources */,
+				8FB34AF314A2816E005129B9 /* japan_icon.png in Resources */,
+				8FB34AF414A2816E005129B9 /* russia_icon.png in Resources */,
+				8FB34AF514A2816E005129B9 /* usa_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
