@@ -12,11 +12,13 @@
 
 @synthesize factionNameLabel;
 @synthesize factionBackgroundImageView;
+@synthesize factionIcon;
 
-- (id)initWithFaction: (NSString *)factionName{
+- (id)initWithFaction: (NSString *)factionName imageName:(NSString *)imageName{
     self = [super initWithNibName:@"FactionViewController" bundle:nil];
     if (self) {
         mFactionName = factionName;
+        mImageName = imageName;
     }
     return self;
 }
@@ -46,6 +48,7 @@
     // Do any additional setup after loading the view from its nib.
     
     factionNameLabel.text = mFactionName;
+    factionIcon.image = [UIImage imageNamed:mImageName]; 
 }
 
 - (void)viewDidUnload

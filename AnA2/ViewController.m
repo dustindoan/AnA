@@ -16,20 +16,12 @@
 @synthesize scrollView;
 @synthesize pageControl;
 
-bool pageControlBeingUsed = NO;
+bool pageControlBeingUsed = NO;     // Necessary to control scrolling/page displayer feedback loop
 
 -(IBAction) stuff {
     [self.tvButton setTitle:@"Done!" forState:UIControlStateNormal];
     self.tvButton.enabled = false;
     //    [tvOut];
-}
-
--(IBAction) doNext {
-    factionLabel.text = @"Next";
-}
-
--(IBAction) doPrevious {
-    factionLabel.text = @"Prev";
 }
 
 //-(void) tvOut {change
@@ -87,14 +79,15 @@ bool pageControlBeingUsed = NO;
     pageControlBeingUsed = NO;
     
     NSArray *factions = [NSArray arrayWithObjects:@"Russia", @"Germany", @"Great Britain", @"Japan", @"USA", nil];
-    
+    NSArray *images = [NSArray arrayWithObjects:@"russia_icon.png", @"germany_icon.png", @"england_icon.png", @"japan_icon.png", @"usa_icon.png", nil];
+
     for (int i = 0; i < factions.count; i++) {
         CGRect frame;
         frame.origin.x = self.scrollView.frame.size.width * i;
         frame.origin.y = 0;
         frame.size = self.scrollView.frame.size;
         
-        FactionViewController *viewController = [[FactionViewController alloc] initWithFaction:[factions objectAtIndex: i]];
+        FactionViewController *viewController = [[FactionViewController alloc] initWithFaction:[factions objectAtIndex: i] imageName:[images objectAtIndex:i]];
         viewController.view.frame = frame;
         [self.scrollView addSubview:viewController.view];
     }
