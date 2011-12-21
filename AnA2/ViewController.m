@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "FactionViewController.h"
+#import "TVOutManager.h"
 
 @implementation ViewController
 
@@ -18,10 +19,8 @@
 
 bool pageControlBeingUsed = NO;
 
--(IBAction) stuff {
-    [self.tvButton setTitle:@"Done!" forState:UIControlStateNormal];
-    self.tvButton.enabled = false;
-    //    [tvOut];
+-(IBAction) tvSwitched {
+    [self tvOut];
 }
 
 -(IBAction) doNext {
@@ -32,35 +31,10 @@ bool pageControlBeingUsed = NO;
     factionLabel.text = @"Prev";
 }
 
-//-(void) tvOut {change
-//    NSLog(@"Number of screens: %d", [[UIScreen screens]count]);
-//    
-//    //Now, if there's an external screen, we need to find its modes, itereate through them and find the highest one. Once we have that mode, break out, and set the UIWindow.
-//    
-//    if([[UIScreen screens]count] > 1) //if there are more than 1 screens connected to the device
-//    {
-//        CGSize max;
-//        UIScreenMode *maxScreenMode;
-//        for(int i = 0; i < [[[[UIScreen screens] objectAtIndex:1] availableModes]count]; i++)
-//        {
-//            UIScreenMode *current = [[[[UIScreen screens]objectAtIndex:1]availableModes]objectAtIndex:i];
-//            if(current.size.width > max.width);
-//            {
-//                max = current.size;
-//                maxScreenMode = current;
-//            }
-//        }
-//        //Now we have the highest mode. Turn the external display to use that mode.
-//        UIScreen *external = [[UIScreen screens] objectAtIndex:1];
-//        external.currentMode = maxScreenMode;
-//        //Boom! Now the external display is set to the proper mode. We need to now set the screen of a new UIWindow to the external screen
-//        external_disp = [externalDisplay alloc];
-//        external_disp.drawImage = drawViewController.drawImage;
-//        UIWindow *newwindow = [UIWindow alloc];
-//        [newwindow addSubview:external_disp.view];
-//        newwindow.screen = external;
-//    }
-//}
+-(void) tvOut {
+    if (tvButton.on) [[TVOutManager sharedInstance] startTVOut];
+	else [[TVOutManager sharedInstance] stopTVOut];
+}
 
 - (IBAction)changePage {
     // update the scroll view to the appropriate page

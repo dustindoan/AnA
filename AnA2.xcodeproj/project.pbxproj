@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8F778C3E14A01D7400BBA0AA /* FactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F778C3C14A01D7400BBA0AA /* FactionViewController.m */; };
 		8F778C3F14A01D7400BBA0AA /* FactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F778C3D14A01D7400BBA0AA /* FactionViewController.xib */; };
+		CB33EDB214A264BF0011C5B1 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = CB33EDAF14A264BF0011C5B1 /* map.png */; };
+		CB33EDB314A264BF0011C5B1 /* TVOutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CB33EDB114A264BF0011C5B1 /* TVOutManager.m */; };
 		CB7E5D00149FCFAF00A8C6E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7E5CFF149FCFAF00A8C6E4 /* UIKit.framework */; };
 		CB7E5D02149FCFAF00A8C6E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7E5D01149FCFAF00A8C6E4 /* Foundation.framework */; };
 		CB7E5D04149FCFAF00A8C6E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7E5D03149FCFAF00A8C6E4 /* CoreGraphics.framework */; };
@@ -38,6 +40,9 @@
 		8F778C3B14A01D7400BBA0AA /* FactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactionViewController.h; sourceTree = "<group>"; };
 		8F778C3C14A01D7400BBA0AA /* FactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactionViewController.m; sourceTree = "<group>"; };
 		8F778C3D14A01D7400BBA0AA /* FactionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FactionViewController.xib; sourceTree = "<group>"; };
+		CB33EDAF14A264BF0011C5B1 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		CB33EDB014A264BF0011C5B1 /* TVOutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVOutManager.h; sourceTree = "<group>"; };
+		CB33EDB114A264BF0011C5B1 /* TVOutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVOutManager.m; sourceTree = "<group>"; };
 		CB7E5CFB149FCFAF00A8C6E4 /* AnA2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnA2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7E5CFF149FCFAF00A8C6E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CB7E5D01149FCFAF00A8C6E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -83,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB33EDB514A264C70011C5B1 /* TVOut */ = {
+			isa = PBXGroup;
+			children = (
+				CB33EDB014A264BF0011C5B1 /* TVOutManager.h */,
+				CB33EDB114A264BF0011C5B1 /* TVOutManager.m */,
+			);
+			name = TVOut;
+			sourceTree = "<group>";
+		};
 		CB7E5CF0149FCFAE00A8C6E4 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +130,8 @@
 		CB7E5D05149FCFAF00A8C6E4 /* AnA2 */ = {
 			isa = PBXGroup;
 			children = (
+				CB33EDB514A264C70011C5B1 /* TVOut */,
+				CB33EDAF14A264BF0011C5B1 /* map.png */,
 				8F778C3B14A01D7400BBA0AA /* FactionViewController.h */,
 				8F778C3C14A01D7400BBA0AA /* FactionViewController.m */,
 				8F778C3D14A01D7400BBA0AA /* FactionViewController.xib */,
@@ -232,6 +248,7 @@
 				CB7E5D0A149FCFAF00A8C6E4 /* InfoPlist.strings in Resources */,
 				CB7E5D16149FCFAF00A8C6E4 /* ViewController.xib in Resources */,
 				8F778C3F14A01D7400BBA0AA /* FactionViewController.xib in Resources */,
+				CB33EDB214A264BF0011C5B1 /* map.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +287,7 @@
 				CB7E5D10149FCFAF00A8C6E4 /* AppDelegate.m in Sources */,
 				CB7E5D13149FCFAF00A8C6E4 /* ViewController.m in Sources */,
 				8F778C3E14A01D7400BBA0AA /* FactionViewController.m in Sources */,
+				CB33EDB314A264BF0011C5B1 /* TVOutManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
