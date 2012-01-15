@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "PurchaseView.h"
 #import "FactionViewController.h"
 #import "TVOutManager.h"
 
@@ -85,22 +86,35 @@ bool pageControlBeingUsed = NO;     // Necessary to control scrolling/page displ
 	// Do any additional setup after loading the view, typically from a nib.
     pageControlBeingUsed = NO;
     
-    NSArray *factions = [NSArray arrayWithObjects:@"Russia", @"Germany", @"Great Britain", @"Japan", @"USA", nil];
-    NSArray *images = [NSArray arrayWithObjects:@"russia_icon.png", @"germany_icon.png", @"england_icon.png", @"japan_icon.png", @"usa_icon.png", nil];
+//    NSArray *factions = [NSArray arrayWithObjects:@"Russia", @"Germany", @"Great Britain", @"Japan", @"USA", nil];
+//    NSArray *images = [NSArray arrayWithObjects:@"russia_icon.png", @"germany_icon.png", @"england_icon.png", @"japan_icon.png", @"usa_icon.png", nil];
 
-    for (int i = 0; i < factions.count; i++) {
-        CGRect frame;
-        frame.origin.x = self.scrollView.frame.size.width * i;
-        frame.origin.y = 0;
-        frame.size = self.scrollView.frame.size;
-        
-        FactionViewController *viewController = [[FactionViewController alloc] initWithFaction:[factions objectAtIndex: i] imageName:[images objectAtIndex:i]];
-        viewController.view.frame = frame;
-        [self.scrollView addSubview:viewController.view];
-    }
+    ViewController *viewController;
+    int page = 0;
+
+    // Repeat for every page
+    CGRect frame;
+    frame.origin.x = self.scrollView.frame.size.width * page;
+    frame.origin.y = 0;
+    frame.size = self.scrollView.frame.size;
+    viewController = [[FactionViewController alloc] initWithFaction:@"Russia" imageName:@"russia_icon.png"];
+    viewController.view.frame = frame;
+    [self.scrollView addSubview:viewController.view];
+    // End repeat
+    page++;
     
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * factions.count, self.scrollView.frame.size.height);
-    self.pageControl.numberOfPages = factions.count;
+    // Repeat for every page
+    frame.origin.x = self.scrollView.frame.size.width * page;
+    frame.origin.y = 0;
+    frame.size = self.scrollView.frame.size;
+    viewController = [PurchaseView alloc];
+    viewController.view.frame = frame;
+    [self.scrollView addSubview:viewController.view];
+    // End repeat
+    page++;
+    
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * NUM_PAGES, self.scrollView.frame.size.height);
+    self.pageControl.numberOfPages = NUM_PAGES;
 }
 
 - (void)viewDidUnload
