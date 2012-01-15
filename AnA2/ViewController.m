@@ -60,7 +60,7 @@ bool pageControlBeingUsed = NO;     // Necessary to control scrolling/page displ
 	// Do any additional setup after loading the view, typically from a nib.
     pageControlBeingUsed = NO;
     
-    NSArray *factions = [NSArray arrayWithObjects:@"Russia", @"Germany", @"Great Britain", @"Japan", @"USA", nil];
+    NSArray *factions = [NSArray arrayWithObjects:@"Russia", @"Deutchland", @"Great Britain", @"Japan", @"USA", nil];
     NSArray *images = [NSArray arrayWithObjects:@"russia_icon.png", @"germany_icon.png", @"england_icon.png", @"japan_icon.png", @"usa_icon.png", nil];
 
     for (int i = 0; i < factions.count; i++) {
