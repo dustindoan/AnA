@@ -138,7 +138,8 @@
         [mirrorView setCenter:CGPointMake(mirrorView.center.x, mirrorView.center.y)];
         
 		//countryView.center = tvoutWindow.center;
-        [self setCountry:Russia];
+        if (countryImage == NULL)
+            [self setCountry:Russia];
         countryView = [[UIImageView alloc] initWithImage:countryImage];//initWithFrame: mirrorRect];
         [countryView setCenter:CGPointMake(30, 30)];
 		
