@@ -130,6 +130,9 @@ bool pageControlBeingUsed = NO;     // Necessary to control scrolling/page displ
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     pageControlBeingUsed = NO;
+    int countryIndex = self.pageControl.currentPage;
+    NSLog(@"%d", self.pageControl.currentPage);
+    [[TVOutManager sharedInstance] setCountry:countryIndex];
 }
 
 @end

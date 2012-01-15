@@ -131,21 +131,29 @@
 		CGFloat vert = max.height / mapSize.height;
 		CGFloat bigScale = horiz < vert ? horiz : vert;
 //		mirrorRect = CGRectMake(mirrorRect.origin.x, mirrorRect.origin.y, mirrorRect.size.width * bigScale, mirrorRect.size.height * bigScale);
+//        mapImage = [self imageByDrawingCircleOnImage:mapImage];
 		
 		mirrorView = [[UIImageView alloc] initWithImage:mapImage];//initWithFrame: mirrorRect];
 		mirrorView.center = tvoutWindow.center;
         [mirrorView setCenter:CGPointMake(mirrorView.center.x, mirrorView.center.y)];
+        
+		//countryView.center = tvoutWindow.center;
+        [self setCountry:Russia];
+        countryView = [[UIImageView alloc] initWithImage:countryImage];//initWithFrame: mirrorRect];
+        [countryView setCenter:CGPointMake(30, 30)];
 		
-        tvoutWindow.transform = CGAffineTransformScale(tvoutWindow.transform, bigScale, bigScale);
+        mirrorView.transform = CGAffineTransformScale(tvoutWindow.transform, bigScale, bigScale);
 		// TV safe area -- scale the window by 20% -- for composite / component, not needed for VGA output
 		if (tvSafeMode) {
             tvoutWindow.transform = CGAffineTransformScale(tvoutWindow.transform, .8, .8);
         }
 		[tvoutWindow addSubview: mirrorView];
+        [tvoutWindow addSubview: countryView];
+        
 //		DELETED[mirrorView release];
         [tvoutWindow makeKeyAndVisible];
 		tvoutWindow.hidden = NO;		
-		tvoutWindow.backgroundColor = [UIColor darkGrayColor];
+		tvoutWindow.backgroundColor = [UIColor blackColor];
 		
 		// orient the view properly
 		if ([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft) {
@@ -166,6 +174,62 @@
 		}
 				
 	}
+}
+
+- (void) setCountry: (PlayableCountry) country {
+    NSString* countryFile;
+    switch (country) {
+        case Russia: countryFile = @"russia_icon.png";break;
+        case Germany: countryFile = @"germany_icon.png";break;
+        case Britain: countryFile = @"england_icon.png";break;
+        case Japan: countryFile = @"japan_icon.png";break;
+        case USA: countryFile = @"usa_icon.png";break;
+    }
+    countryImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:countryFile ofType:nil]];
+    CGSize scaledCountrySize;
+    scaledCountrySize.width = 40;
+    scaledCountrySize.height = 40;
+    countryImage = [self scaleImage: countryImage: scaledCountrySize];
+}
+
+- (UIImage *) scaleImage: (UIImage *) image: (CGSize) newSize {
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+- (UIImage *)imageByDrawingCircleOnImage:(UIImage *)image
+{
+	// begin a graphics context of sufficient size
+	UIGraphicsBeginImageContext(image.size);
+    
+	// draw original image into the context
+	[image drawAtPoint:CGPointZero];
+    
+	// get the context for CoreGraphics
+	CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+	// set stroking color and draw circle
+	[[UIColor redColor] setStroke];
+    
+	// make circle rect 5 px from border
+	CGRect circleRect = CGRectMake(0, 0,
+                                   image.size.width,
+                                   image.size.height);
+	circleRect = CGRectInset(circleRect, 5, 5);
+    
+	// draw circle
+	CGContextStrokeEllipseInRect(ctx, circleRect);
+    
+	// make image out of bitmap context
+	UIImage *retImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+	// free the context
+	UIGraphicsEndImageContext();
+    
+	return retImage;
 }
 
 - (void) stopTVOut;
@@ -222,6 +286,7 @@
 	image = mapImage;//UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 	mirrorView.image = image;
+    countryView.image = countryImage;
 //    [mirrorView setCenter:CGPointMake(mirrorView.center.x+1, mirrorView.center.y)];
 
 #endif

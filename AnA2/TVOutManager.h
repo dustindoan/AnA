@@ -16,11 +16,15 @@
 	NSTimer *updateTimer;
 	UIImage *image;
     UIImage *mapImage;
+    UIImage* countryImage;
 	UIImageView *mirrorView;
+    UIImageView *countryView;
 	BOOL done;
 	BOOL tvSafeMode;
 	CGAffineTransform startingTransform;
 }
+
+typedef enum { Russia, Germany, Britain, Japan, USA} PlayableCountry;
 
 //@property(assign) BOOL tvSafeMode;
 
@@ -35,5 +39,8 @@
 - (void) screenDidDisconnectNotification: (NSNotification*) notification;
 - (void) screenModeDidChangeNotification: (NSNotification*) notification;
 - (void) deviceOrientationDidChange: (NSNotification*) notification;
+- (UIImage *)imageByDrawingCircleOnImage:(UIImage *)image;
+- (UIImage *) scaleImage: (UIImage *) image: (CGSize) size;
+- (void) setCountry: (PlayableCountry) country;
 
 @end
