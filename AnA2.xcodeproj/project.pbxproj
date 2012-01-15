@@ -483,7 +483,7 @@
 				INFOPLIST_FILE = "AnA2/AnA2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -496,7 +496,7 @@
 				INFOPLIST_FILE = "AnA2/AnA2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
