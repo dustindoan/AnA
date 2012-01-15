@@ -10,10 +10,14 @@
 #import "FactionViewController.h"
 #import "TVOutManager.h"
 
+#define NUM_PAGES 5
+
 @implementation ViewController
 
 @synthesize tvButton;
-@synthesize factionLabel;
+@synthesize navNextButton;
+@synthesize navPrevButton;
+
 @synthesize scrollView;
 @synthesize pageControl;
 
@@ -24,11 +28,11 @@ bool pageControlBeingUsed = NO;     // Necessary to control scrolling/page displ
 }
 
 -(IBAction) doNext {
-    factionLabel.text = @"Next";
+    [self setPage:([self getPage] + 1)];
 }
 
 -(IBAction) doPrevious {
-    factionLabel.text = @"Prev";
+    [self setPage:([self getPage] - 1)];
 }
 
 -(void) tvOut {
@@ -38,8 +42,29 @@ bool pageControlBeingUsed = NO;     // Necessary to control scrolling/page displ
 
 - (IBAction)changePage {
     // update the scroll view to the appropriate page
+    int p = [self getPage];
+    [self setPage:p];
+}
+
+-(int) getPage
+{
+    return self.pageControl.currentPage;
+}
+
+-(void) setPage: (int) page
+{
+    /*
+     * Wrapping, for now
+     */
+    if(page >= NUM_PAGES){
+        page = 0;
+    } else if (page < 0){
+        page = NUM_PAGES-1;
+    }
+    
     CGRect frame;
-    frame.origin.x = self.scrollView.frame.size.width * self.pageControl.currentPage;
+    self.pageControl.currentPage = page;
+    frame.origin.x = self.scrollView.frame.size.width * page;
     frame.origin.y = 0;
     frame.size = self.scrollView.frame.size;
     [self.scrollView scrollRectToVisible:frame animated:YES];
