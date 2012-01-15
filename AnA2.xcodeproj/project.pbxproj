@@ -424,6 +424,7 @@
 				GCC_PREFIX_HEADER = "AnA2/AnA2-Prefix.pch";
 				INFOPLIST_FILE = "AnA2/AnA2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -435,6 +436,7 @@
 				GCC_PREFIX_HEADER = "AnA2/AnA2-Prefix.pch";
 				INFOPLIST_FILE = "AnA2/AnA2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
