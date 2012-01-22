@@ -32,6 +32,14 @@
     return self;
 }
 
+- (void) setFaction: (NSString *) factionName: (NSString *) imageName
+{
+    mFactionName = factionName;
+    mImageName = imageName;
+    factionNameLabel.text = mFactionName;
+    factionIcon.image = [UIImage imageNamed:mImageName];
+}
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.

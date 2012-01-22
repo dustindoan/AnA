@@ -11,7 +11,8 @@
 #import "FactionViewController.h"
 #import "TVOutManager.h"
 
-#define NUM_PAGES 5
+#define NUM_PAGES 2
+#define NUM_FACTIONS 5
 
 @implementation ViewController
 
@@ -23,6 +24,10 @@
 @synthesize pageControl;
 
 bool pageControlBeingUsed = NO;     // Necessary to control scrolling/page displayer feedback loop
+int currentFaction = 0;
+
+FactionViewController * viewFactionView;
+PurchaseView * viewPurchaseView;
 
 -(IBAction) tvSwitched {
     [self tvOut];
@@ -52,6 +57,26 @@ bool pageControlBeingUsed = NO;     // Necessary to control scrolling/page displ
     return self.pageControl.currentPage;
 }
 
+/*
+ *  Should only be called as necessary.  Updates all views for use with the selected faction.
+ */
+- (void) updateFaction
+{
+    if(currentFaction >= NUM_FACTIONS){
+        currentFaction = 0;
+    } else if (currentFaction < 0){
+        currentFaction = NUM_FACTIONS-1;
+    }
+
+    NSArray *factions = [NSArray arrayWithObjects:@"Russia", @"Germany", @"Great Britain", @"Japan", @"USA", nil];
+    NSArray *images = [NSArray arrayWithObjects:@"russia_icon.png", @"germany_icon.png", @"england_icon.png", @"japan_icon.png", @"usa_icon.png", nil];
+    
+    NSLog(@"Setting faction: %d", currentFaction);
+    
+    [viewFactionView setFaction:[factions objectAtIndex:currentFaction]:[images objectAtIndex:currentFaction]];
+}
+
+
 -(void) setPage: (int) page
 {
     /*
@@ -59,8 +84,12 @@ bool pageControlBeingUsed = NO;     // Necessary to control scrolling/page displ
      */
     if(page >= NUM_PAGES){
         page = 0;
+        currentFaction++;
+        [self updateFaction];
     } else if (page < 0){
         page = NUM_PAGES-1;
+        currentFaction--;
+        [self updateFaction];
     }
     
     CGRect frame;
@@ -80,38 +109,29 @@ bool pageControlBeingUsed = NO;     // Necessary to control scrolling/page displ
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
+- (void) addViewToScroll: (ViewController *) viewController: (int) page
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    pageControlBeingUsed = NO;
-    
-//    NSArray *factions = [NSArray arrayWithObjects:@"Russia", @"Germany", @"Great Britain", @"Japan", @"USA", nil];
-//    NSArray *images = [NSArray arrayWithObjects:@"russia_icon.png", @"germany_icon.png", @"england_icon.png", @"japan_icon.png", @"usa_icon.png", nil];
-
-    ViewController *viewController;
-    int page = 0;
-
     // Repeat for every page
     CGRect frame;
     frame.origin.x = self.scrollView.frame.size.width * page;
     frame.origin.y = 0;
     frame.size = self.scrollView.frame.size;
-    viewController = [[FactionViewController alloc] initWithFaction:@"Russia" imageName:@"russia_icon.png"];
     viewController.view.frame = frame;
     [self.scrollView addSubview:viewController.view];
-    // End repeat
-    page++;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+    pageControlBeingUsed = NO;
+
+    int page = 0;
+    viewFactionView = [[FactionViewController alloc] initWithFaction:@"Russia" imageName:@"russia_icon.png"];
+    [self addViewToScroll:(ViewController *)viewFactionView:page++];
     
-    // Repeat for every page
-    frame.origin.x = self.scrollView.frame.size.width * page;
-    frame.origin.y = 0;
-    frame.size = self.scrollView.frame.size;
-    viewController = [PurchaseView alloc];
-    viewController.view.frame = frame;
-    [self.scrollView addSubview:viewController.view];
-    // End repeat
-    page++;
+    viewPurchaseView = [PurchaseView alloc];
+    [self addViewToScroll:(ViewController *)viewPurchaseView:page++];
     
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * NUM_PAGES, self.scrollView.frame.size.height);
     self.pageControl.numberOfPages = NUM_PAGES;

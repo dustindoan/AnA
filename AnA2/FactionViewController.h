@@ -15,7 +15,6 @@
 
     NSString *mFactionName;
     NSString *mImageName;
-
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *factionNameLabel;
@@ -23,5 +22,6 @@
 @property (nonatomic, retain) IBOutlet UIImageView *factionIcon;
 
 - (id)initWithFaction:(NSString *)factionName imageName:(NSString *)imageName;
+- (void) setFaction: (NSString *) factionName: (NSString *) imageName;
 
 @end
