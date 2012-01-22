@@ -29,6 +29,11 @@ int currentFaction = 0;
 FactionViewController * viewFactionView;
 PurchaseView * viewPurchaseView;
 
+ViewController * currentView;
+ViewController * previousView;
+ViewController * nextView;
+
+
 -(IBAction) tvSwitched {
     [self tvOut];
 }
@@ -74,22 +79,26 @@ PurchaseView * viewPurchaseView;
     NSLog(@"Setting faction: %d", currentFaction);
     
     [viewFactionView setFaction:[factions objectAtIndex:currentFaction]:[images objectAtIndex:currentFaction]];
+    [[TVOutManager sharedInstance] setCountry:currentFaction];
 }
 
-
+/* Set page is called after the user has stopped scrolling, or clicked a button */
 -(void) setPage: (int) page
 {
     /*
      * Wrapping, for now
      */
+    BOOL wrapped = NO;
     if(page >= NUM_PAGES){
         page = 0;
         currentFaction++;
         [self updateFaction];
+        wrapped = YES;
     } else if (page < 0){
         page = NUM_PAGES-1;
         currentFaction--;
         [self updateFaction];
+        wrapped = YES;
     }
     
     CGRect frame;
@@ -97,7 +106,7 @@ PurchaseView * viewPurchaseView;
     frame.origin.x = self.scrollView.frame.size.width * page;
     frame.origin.y = 0;
     frame.size = self.scrollView.frame.size;
-    [self.scrollView scrollRectToVisible:frame animated:YES];
+    [self.scrollView scrollRectToVisible:frame animated:!wrapped];
     pageControlBeingUsed = YES;
 }
 
@@ -108,6 +117,7 @@ PurchaseView * viewPurchaseView;
 }
 
 #pragma mark - View lifecycle
+
 
 - (void) addViewToScroll: (ViewController *) viewController: (int) page
 {
@@ -120,6 +130,8 @@ PurchaseView * viewPurchaseView;
     [self.scrollView addSubview:viewController.view];
 }
 
+
+// Add the initial pages to the buffer
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -174,6 +186,9 @@ PurchaseView * viewPurchaseView;
  * ScrollDelegate Stuffs
  */
 
+/*
+ *  scrollViewDidScroll is called continously while scrolling
+ */
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
     // Update the page when more than 50% of the previous/next page is visible
     CGFloat pageWidth = self.scrollView.frame.size.width;
@@ -181,6 +196,7 @@ PurchaseView * viewPurchaseView;
     int page = floor((x - pageWidth / 2) / pageWidth);
     page = page + 1;
     self.pageControl.currentPage = page;
+    NSLog(@"SCroll View Did Scroll");
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -191,7 +207,6 @@ PurchaseView * viewPurchaseView;
     pageControlBeingUsed = NO;
     int countryIndex = self.pageControl.currentPage;
     NSLog(@"%d", self.pageControl.currentPage);
-    [[TVOutManager sharedInstance] setCountry:countryIndex];
 }
 
 @end
