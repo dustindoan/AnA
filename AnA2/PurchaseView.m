@@ -10,6 +10,31 @@
 
 @implementation PurchaseView
 
+@synthesize infantryStepper;
+@synthesize artilleryStepper;
+@synthesize tankStepper;
+@synthesize fighterStepper;
+@synthesize bomberStepper;
+@synthesize submarineStepper;
+@synthesize transportStepper;
+@synthesize destroyerStepper;
+@synthesize cruiserStepper;
+@synthesize carrierStepper;
+@synthesize battleshipStepper;
+
+@synthesize infantryField;
+@synthesize artilleryField;
+@synthesize tankField;
+@synthesize fighterField;
+@synthesize bomberField;
+@synthesize submarineField;
+@synthesize transportField;
+@synthesize destroyerField;
+@synthesize cruiserField;
+@synthesize carrierField;
+@synthesize battleshipField;
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
