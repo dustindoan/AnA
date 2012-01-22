@@ -32,6 +32,17 @@
 		CB7E5D20149FCFAF00A8C6E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7E5D01149FCFAF00A8C6E4 /* Foundation.framework */; };
 		CB7E5D28149FCFAF00A8C6E4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB7E5D26149FCFAF00A8C6E4 /* InfoPlist.strings */; };
 		CB7E5D2B149FCFAF00A8C6E4 /* AnA2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7E5D2A149FCFAF00A8C6E4 /* AnA2Tests.m */; };
+		CB8A19D214CC6E9C003C59FD /* carrier.png in Resources */ = {isa = PBXBuildFile; fileRef = CB8A19C714CC6E9C003C59FD /* carrier.png */; };
+		CB8A19D314CC6E9C003C59FD /* tank.png in Resources */ = {isa = PBXBuildFile; fileRef = CB8A19C814CC6E9C003C59FD /* tank.png */; };
+		CB8A19D414CC6E9C003C59FD /* submarine.png in Resources */ = {isa = PBXBuildFile; fileRef = CB8A19C914CC6E9C003C59FD /* submarine.png */; };
+		CB8A19D514CC6E9C003C59FD /* infantry.png in Resources */ = {isa = PBXBuildFile; fileRef = CB8A19CA14CC6E9C003C59FD /* infantry.png */; };
+		CB8A19D614CC6E9C003C59FD /* fighter.png in Resources */ = {isa = PBXBuildFile; fileRef = CB8A19CB14CC6E9C003C59FD /* fighter.png */; };
+		CB8A19D714CC6E9C003C59FD /* destroyer.png in Resources */ = {isa = PBXBuildFile; fileRef = CB8A19CC14CC6E9C003C59FD /* destroyer.png */; };
+		CB8A19D814CC6E9C003C59FD /* cruiser.png in Resources */ = {isa = PBXBuildFile; fileRef = CB8A19CD14CC6E9C003C59FD /* cruiser.png */; };
+		CB8A19D914CC6E9C003C59FD /* bomber.png in Resources */ = {isa = PBXBuildFile; fileRef = CB8A19CE14CC6E9C003C59FD /* bomber.png */; };
+		CB8A19DA14CC6E9C003C59FD /* battleship.png in Resources */ = {isa = PBXBuildFile; fileRef = CB8A19CF14CC6E9C003C59FD /* battleship.png */; };
+		CB8A19DB14CC6E9C003C59FD /* artillery.png in Resources */ = {isa = PBXBuildFile; fileRef = CB8A19D014CC6E9C003C59FD /* artillery.png */; };
+		CB8A19DC14CC6E9C003C59FD /* transport.png in Resources */ = {isa = PBXBuildFile; fileRef = CB8A19D114CC6E9C003C59FD /* transport.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +90,17 @@
 		CB7E5D27149FCFAF00A8C6E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CB7E5D29149FCFAF00A8C6E4 /* AnA2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnA2Tests.h; sourceTree = "<group>"; };
 		CB7E5D2A149FCFAF00A8C6E4 /* AnA2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnA2Tests.m; sourceTree = "<group>"; };
+		CB8A19C714CC6E9C003C59FD /* carrier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carrier.png; sourceTree = "<group>"; };
+		CB8A19C814CC6E9C003C59FD /* tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tank.png; sourceTree = "<group>"; };
+		CB8A19C914CC6E9C003C59FD /* submarine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submarine.png; sourceTree = "<group>"; };
+		CB8A19CA14CC6E9C003C59FD /* infantry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infantry.png; sourceTree = "<group>"; };
+		CB8A19CB14CC6E9C003C59FD /* fighter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fighter.png; sourceTree = "<group>"; };
+		CB8A19CC14CC6E9C003C59FD /* destroyer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = destroyer.png; sourceTree = "<group>"; };
+		CB8A19CD14CC6E9C003C59FD /* cruiser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cruiser.png; sourceTree = "<group>"; };
+		CB8A19CE14CC6E9C003C59FD /* bomber.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bomber.png; sourceTree = "<group>"; };
+		CB8A19CF14CC6E9C003C59FD /* battleship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = battleship.png; sourceTree = "<group>"; };
+		CB8A19D014CC6E9C003C59FD /* artillery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = artillery.png; sourceTree = "<group>"; };
+		CB8A19D114CC6E9C003C59FD /* transport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transport.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +186,7 @@
 		8FB34AF714A28174005129B9 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				CB8A19C614CC6E7E003C59FD /* units */,
 				8FB34AEA14A2816E005129B9 /* england_icon.png */,
 				8FB34AEB14A2816E005129B9 /* germany_icon.png */,
 				8FB34AEC14A2816E005129B9 /* italy_icon.png */,
@@ -258,6 +281,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CB8A19C614CC6E7E003C59FD /* units */ = {
+			isa = PBXGroup;
+			children = (
+				CB8A19C714CC6E9C003C59FD /* carrier.png */,
+				CB8A19C814CC6E9C003C59FD /* tank.png */,
+				CB8A19C914CC6E9C003C59FD /* submarine.png */,
+				CB8A19CA14CC6E9C003C59FD /* infantry.png */,
+				CB8A19CB14CC6E9C003C59FD /* fighter.png */,
+				CB8A19CC14CC6E9C003C59FD /* destroyer.png */,
+				CB8A19CD14CC6E9C003C59FD /* cruiser.png */,
+				CB8A19CE14CC6E9C003C59FD /* bomber.png */,
+				CB8A19CF14CC6E9C003C59FD /* battleship.png */,
+				CB8A19D014CC6E9C003C59FD /* artillery.png */,
+				CB8A19D114CC6E9C003C59FD /* transport.png */,
+			);
+			name = units;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -339,6 +380,17 @@
 				8FB34AF414A2816E005129B9 /* russia_icon.png in Resources */,
 				8FB34AF514A2816E005129B9 /* usa_icon.png in Resources */,
 				8F9980DE14C3583C001C1420 /* PurchaseView.xib in Resources */,
+				CB8A19D214CC6E9C003C59FD /* carrier.png in Resources */,
+				CB8A19D314CC6E9C003C59FD /* tank.png in Resources */,
+				CB8A19D414CC6E9C003C59FD /* submarine.png in Resources */,
+				CB8A19D514CC6E9C003C59FD /* infantry.png in Resources */,
+				CB8A19D614CC6E9C003C59FD /* fighter.png in Resources */,
+				CB8A19D714CC6E9C003C59FD /* destroyer.png in Resources */,
+				CB8A19D814CC6E9C003C59FD /* cruiser.png in Resources */,
+				CB8A19D914CC6E9C003C59FD /* bomber.png in Resources */,
+				CB8A19DA14CC6E9C003C59FD /* battleship.png in Resources */,
+				CB8A19DB14CC6E9C003C59FD /* artillery.png in Resources */,
+				CB8A19DC14CC6E9C003C59FD /* transport.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,7 +535,7 @@
 				INFOPLIST_FILE = "AnA2/AnA2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -496,7 +548,7 @@
 				INFOPLIST_FILE = "AnA2/AnA2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

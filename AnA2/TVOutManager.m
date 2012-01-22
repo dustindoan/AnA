@@ -138,9 +138,15 @@
         [mirrorView setCenter:CGPointMake(mirrorView.center.x, mirrorView.center.y)];
         
 		//countryView.center = tvoutWindow.center;
-        [self setCountry:Russia];
+        if (countryImage == NULL)
+            [self setCountry:Russia];
         countryView = [[UIImageView alloc] initWithImage:countryImage];//initWithFrame: mirrorRect];
         [countryView setCenter:CGPointMake(30, 30)];
+        
+        if (unitImage == NULL)
+            [self addUnit];
+        unitView = [[UIImageView alloc] initWithImage:unitImage];//initWithFrame: mirrorRect];
+        [unitView setCenter:CGPointMake(740, 590)];
 		
         mirrorView.transform = CGAffineTransformScale(tvoutWindow.transform, bigScale, bigScale);
 		// TV safe area -- scale the window by 20% -- for composite / component, not needed for VGA output
@@ -149,6 +155,7 @@
         }
 		[tvoutWindow addSubview: mirrorView];
         [tvoutWindow addSubview: countryView];
+        [tvoutWindow addSubview: unitView];
         
 //		DELETED[mirrorView release];
         [tvoutWindow makeKeyAndVisible];
@@ -192,6 +199,39 @@
     countryImage = [self scaleImage: countryImage: scaledCountrySize];
 }
 
+- (void) addUnit {
+    NSString* countryFile = @"infantry.png";
+//    switch (country) {
+//        case Russia: countryFile = @"russia_icon.png";break;
+//        case Germany: countryFile = @"germany_icon.png";break;
+//        case Britain: countryFile = @"england_icon.png";break;
+//        case Japan: countryFile = @"japan_icon.png";break;
+//        case USA: countryFile = @"usa_icon.png";break;
+//    }
+    unitImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:countryFile ofType:nil]];
+    CGSize scaledCountrySize;
+    scaledCountrySize.width = 20;
+    scaledCountrySize.height = 20;
+    unitImage = [self scaleImage: unitImage: scaledCountrySize];
+    
+//    CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);
+//    CGContextSetRGBFillColor(context, 0.0, 0.0, 1.0, 1);
+//	
+//    char* text	= (char *)[text1 cStringUsingEncoding:NSASCIIStringEncoding];// "05/05/09";
+//    CGContextSelectFont(context, "Arial", 18, kCGEncodingMacRoman);
+//    CGContextSetTextDrawingMode(context, kCGTextFill);
+//    CGContextSetRGBFillColor(context, 255, 255, 255, 1);
+//	
+//    
+//    //rotate text
+//    CGContextSetTextMatrix(context, CGAffineTransformMakeRotation( -M_PI/4 ));
+//	
+//    CGContextShowTextAtPoint(context, 4, 52, text, strlen(text));
+//	
+//	
+//    CGImageRef imageMasked = CGBitmapContextCreateImage(context);
+}
+
 - (UIImage *) scaleImage: (UIImage *) image: (CGSize) newSize {
     UIGraphicsBeginImageContext(newSize);
     [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
@@ -200,7 +240,41 @@
     return newImage;
 }
 
-- (UIImage *)imageByDrawingCircleOnImage:(UIImage *)image
+- (UIImage *)changeColor
+{
+    UIImage *temp23=[UIImage imageNamed:@"infantry.png"];
+    CGImageRef ref1=[self createMask:temp23];
+    const float colorMasking[6] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+    CGImageRef New=CGImageCreateWithMaskingColors(ref1, colorMasking);
+    UIImage *resultedimage=[UIImage imageWithCGImage:New];
+    return resultedimage;
+}
+
+- (CGImageRef)createMask:(UIImage*)temp
+{
+    CGImageRef ref=temp.CGImage;
+    int mWidth=CGImageGetWidth(ref);
+    int mHeight=CGImageGetHeight(ref);
+    int count=mWidth*mHeight*4;
+    void *bufferdata=malloc(count);
+    
+    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault;
+    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
+    
+    CGContextRef cgctx = CGBitmapContextCreate (bufferdata,mWidth,mHeight, 8,mWidth*4, colorSpaceRef, kCGImageAlphaPremultipliedFirst); 
+    
+    CGRect rect = {0,0,mWidth,mHeight};
+    CGContextDrawImage(cgctx, rect, ref); 
+    bufferdata = CGBitmapContextGetData (cgctx);
+    
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, bufferdata, mWidth*mHeight*4, NULL);
+    CGImageRef savedimageref = CGImageCreate(mWidth,mHeight, 8, 32, mWidth*4, colorSpaceRef, bitmapInfo,provider , NULL, NO, renderingIntent);
+    CFRelease(colorSpaceRef);
+    return savedimageref;
+}
+
+- (UIImage *)drawNumber:(UIImage *)image
 {
 	// begin a graphics context of sufficient size
 	UIGraphicsBeginImageContext(image.size);
@@ -283,10 +357,11 @@
             CGContextRestoreGState(context);
         }
     }	
-	image = mapImage;//UIGraphicsGetImageFromCurrentImageContext();
+//	image = mapImage;//UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
-	mirrorView.image = image;
+	mirrorView.image = mapImage;
     countryView.image = countryImage;
+    unitView.image = unitImage;
 //    [mirrorView setCenter:CGPointMake(mirrorView.center.x+1, mirrorView.center.y)];
 
 #endif

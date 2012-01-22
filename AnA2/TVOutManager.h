@@ -14,11 +14,12 @@
 	UIWindow* deviceWindow;
 	UIWindow* tvoutWindow;
 	NSTimer *updateTimer;
-	UIImage *image;
     UIImage *mapImage;
     UIImage* countryImage;
+    UIImage* unitImage;
 	UIImageView *mirrorView;
     UIImageView *countryView;
+    UIImageView *unitView;
 	BOOL done;
 	BOOL tvSafeMode;
 	CGAffineTransform startingTransform;
@@ -42,5 +43,9 @@ typedef enum { Russia, Germany, Britain, Japan, USA} PlayableCountry;
 - (UIImage *)imageByDrawingCircleOnImage:(UIImage *)image;
 - (UIImage *) scaleImage: (UIImage *) image: (CGSize) size;
 - (void) setCountry: (PlayableCountry) country;
+- (void) addUnit;
+- (UIImage *)changeColor;
+- (CGImageRef)createMask:(UIImage*)temp;
+
 
 @end
