@@ -214,22 +214,22 @@
     scaledCountrySize.height = 20;
     unitImage = [self scaleImage: unitImage: scaledCountrySize];
     
-    CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);
-    CGContextSetRGBFillColor(context, 0.0, 0.0, 1.0, 1);
-	
-    char* text	= (char *)[text1 cStringUsingEncoding:NSASCIIStringEncoding];// "05/05/09";
-    CGContextSelectFont(context, "Arial", 18, kCGEncodingMacRoman);
-    CGContextSetTextDrawingMode(context, kCGTextFill);
-    CGContextSetRGBFillColor(context, 255, 255, 255, 1);
-	
-    
-    //rotate text
-    CGContextSetTextMatrix(context, CGAffineTransformMakeRotation( -M_PI/4 ));
-	
-    CGContextShowTextAtPoint(context, 4, 52, text, strlen(text));
-	
-	
-    CGImageRef imageMasked = CGBitmapContextCreateImage(context);
+//    CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);
+//    CGContextSetRGBFillColor(context, 0.0, 0.0, 1.0, 1);
+//	
+//    char* text	= (char *)[text1 cStringUsingEncoding:NSASCIIStringEncoding];// "05/05/09";
+//    CGContextSelectFont(context, "Arial", 18, kCGEncodingMacRoman);
+//    CGContextSetTextDrawingMode(context, kCGTextFill);
+//    CGContextSetRGBFillColor(context, 255, 255, 255, 1);
+//	
+//    
+//    //rotate text
+//    CGContextSetTextMatrix(context, CGAffineTransformMakeRotation( -M_PI/4 ));
+//	
+//    CGContextShowTextAtPoint(context, 4, 52, text, strlen(text));
+//	
+//	
+//    CGImageRef imageMasked = CGBitmapContextCreateImage(context);
 }
 
 - (UIImage *) scaleImage: (UIImage *) image: (CGSize) newSize {
