@@ -17,8 +17,7 @@
 @implementation ViewController
 
 @synthesize tvButton;
-@synthesize navNextButton;
-@synthesize navPrevButton;
+@synthesize navBar;
 
 @synthesize scrollView;
 @synthesize pageControl;
@@ -28,10 +27,6 @@ int currentFaction = 0;
 
 FactionViewController * viewFactionView;
 PurchaseView * viewPurchaseView;
-
-ViewController * currentView;
-ViewController * previousView;
-ViewController * nextView;
 
 
 -(IBAction) tvSwitched {
@@ -57,6 +52,25 @@ ViewController * nextView;
     [self setPage:p];
 }
 
+-(int) nextFaction
+{
+    if(currentFaction == NUM_FACTIONS-1){
+        return 0;
+    }
+    
+    return currentFaction + 1;
+}
+
+-(int) prevFaction
+{
+    if(currentFaction == 0){
+        return NUM_FACTIONS-1;
+    }
+    
+    return currentFaction - 1;
+}
+
+
 -(int) getPage
 {
     return self.pageControl.currentPage;
@@ -75,16 +89,21 @@ ViewController * nextView;
 
     NSArray *factions = [NSArray arrayWithObjects:@"Russia", @"Germany", @"Great Britain", @"Japan", @"USA", nil];
     NSArray *images = [NSArray arrayWithObjects:@"russia_icon.png", @"germany_icon.png", @"england_icon.png", @"japan_icon.png", @"usa_icon.png", nil];
-    
+
     NSLog(@"Setting faction: %d", currentFaction);
     
     [viewFactionView setFaction:[factions objectAtIndex:currentFaction]:[images objectAtIndex:currentFaction]];
+    navBar.topItem.title = [factions objectAtIndex:currentFaction];
+    
     [[TVOutManager sharedInstance] setCountry:currentFaction];
 }
 
 /* Set page is called after the user has stopped scrolling, or clicked a button */
 -(void) setPage: (int) page
 {
+    NSArray *factions = [NSArray arrayWithObjects:@"Russia", @"Germany", @"Great Britain", @"Japan", @"USA", nil];
+    NSArray *stages = [NSArray arrayWithObjects:@"Faction Summary", @"Purchase Units", nil];
+
     /*
      * Wrapping, for now
      */
@@ -108,6 +127,21 @@ ViewController * nextView;
     frame.size = self.scrollView.frame.size;
     [self.scrollView scrollRectToVisible:frame animated:!wrapped];
     pageControlBeingUsed = YES;
+    
+    if(page == NUM_PAGES-1){
+        // Last page
+        navBar.topItem.rightBarButtonItem.title = [factions objectAtIndex:[self nextFaction]];
+    } else {
+        navBar.topItem.rightBarButtonItem.title = [stages objectAtIndex:page+1];
+    }
+    
+    if (page == 0){
+        navBar.topItem.leftBarButtonItem.title = [factions objectAtIndex:[self prevFaction]];
+    } else {
+        // Normal
+        navBar.topItem.leftBarButtonItem.title = [stages objectAtIndex:page-1];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning

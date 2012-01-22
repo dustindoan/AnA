@@ -12,16 +12,14 @@
     UISwitch* tvButton;
     UIPageControl* pageControl;
     
-    UIButton* navNextButton;
-    UIButton* navPrevButton;
+    UINavigationBar *navBar;
     
     IBOutlet UIScrollView *scrollView;
 }
 
 @property (nonatomic, retain) IBOutlet UISwitch *tvButton;
 
-@property (nonatomic, retain) IBOutlet UIButton *navNextButton;
-@property (nonatomic, retain) IBOutlet UIButton *navPrevButton;
+@property (nonatomic, retain) IBOutlet UINavigationBar *navBar;
 
 @property (nonatomic, retain) IBOutlet UIScrollView* scrollView;
 @property (nonatomic, retain) IBOutlet UIPageControl* pageControl;
