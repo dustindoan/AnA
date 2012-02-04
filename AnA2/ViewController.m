@@ -16,7 +16,6 @@
 
 @implementation ViewController
 
-@synthesize tvButton;
 @synthesize navNextButton;
 @synthesize navPrevButton;
 
@@ -29,21 +28,12 @@ int currentFaction = 0;
 FactionViewController * viewFactionView;
 PurchaseView * viewPurchaseView;
 
--(IBAction) tvSwitched {
-    [self tvOut];
-}
-
 -(IBAction) doNext {
     [self setPage:([self getPage] + 1)];
 }
 
 -(IBAction) doPrevious {
     [self setPage:([self getPage] - 1)];
-}
-
--(void) tvOut {
-    if (tvButton.on) [[TVOutManager sharedInstance] startTVOut];
-	else [[TVOutManager sharedInstance] stopTVOut];
 }
 
 - (IBAction)changePage {

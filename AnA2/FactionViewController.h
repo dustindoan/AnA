@@ -17,11 +17,14 @@
     NSString *mImageName;
 }
 
+@property (nonatomic, retain) IBOutlet UISwitch *tvButton;
+
 @property (nonatomic, retain) IBOutlet UILabel *factionNameLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *factionBackgroundImageView;
 @property (nonatomic, retain) IBOutlet UIImageView *factionIcon;
 
+- (void) tvOut;
 - (id)initWithFaction:(NSString *)factionName imageName:(NSString *)imageName;
 - (void) setFaction: (NSString *) factionName: (NSString *) imageName;
-
+- (IBAction) tvSwitched;
 @end

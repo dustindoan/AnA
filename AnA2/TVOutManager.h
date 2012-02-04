@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "PlacedUnit.h"
 
 @interface TVOutManager : NSObject {
 
@@ -16,10 +16,13 @@
 	NSTimer *updateTimer;
     UIImage *mapImage;
     UIImage* countryImage;
-    UIImage* unitImage;
+    CGFloat infantryCount;
 	UIImageView *mirrorView;
     UIImageView *countryView;
-    UIImageView *unitView;
+    
+    UIImageView *unitView[10];
+    NSMutableArray* placedUnits;
+    
 	BOOL done;
 	BOOL tvSafeMode;
 	CGAffineTransform startingTransform;
@@ -43,9 +46,11 @@ typedef enum { Russia, Germany, Britain, Japan, USA} PlayableCountry;
 - (UIImage *)imageByDrawingCircleOnImage:(UIImage *)image;
 - (UIImage *) scaleImage: (UIImage *) image: (CGSize) size;
 - (void) setCountry: (PlayableCountry) country;
-- (void) addUnit;
+- (void) setPlacedUnits:(Unit) placedUnit: (int) count;
 - (UIImage *)changeColor;
 - (CGImageRef)createMask:(UIImage*)temp;
-
+- (UIImage*) drawNumberOnImage:(CGSize) scaledSize:(UIImage*) image:(CGFloat) count;
+- (void) setUnitViewsVisible:(BOOL) visible;
+- (UIImage*) getImageWithCount: (NSString*) fileName :(int) count;
 
 @end

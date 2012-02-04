@@ -17,8 +17,12 @@
 		8FB34AF314A2816E005129B9 /* japan_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB34AED14A2816E005129B9 /* japan_icon.png */; };
 		8FB34AF414A2816E005129B9 /* russia_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB34AEE14A2816E005129B9 /* russia_icon.png */; };
 		8FB34AF514A2816E005129B9 /* usa_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB34AEF14A2816E005129B9 /* usa_icon.png */; };
+		CB1036F214CE49EA00A5C711 /* GermanyStamp.png in Resources */ = {isa = PBXBuildFile; fileRef = CB1036F114CE49EA00A5C711 /* GermanyStamp.png */; };
 		CB33EDB214A264BF0011C5B1 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = CB33EDAF14A264BF0011C5B1 /* map.png */; };
 		CB33EDB314A264BF0011C5B1 /* TVOutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CB33EDB114A264BF0011C5B1 /* TVOutManager.m */; };
+		CB3D04D014D106C200ACE23E /* PlayableUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D04CF14D106C200ACE23E /* PlayableUnit.m */; };
+		CB3D04D314D1082700ACE23E /* InfantryUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D04D214D1082700ACE23E /* InfantryUnit.m */; };
+		CB3D04D614D11CFE00ACE23E /* PlacedUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3D04D514D11CFE00ACE23E /* PlacedUnit.m */; };
 		CB7E5D00149FCFAF00A8C6E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7E5CFF149FCFAF00A8C6E4 /* UIKit.framework */; };
 		CB7E5D02149FCFAF00A8C6E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7E5D01149FCFAF00A8C6E4 /* Foundation.framework */; };
 		CB7E5D04149FCFAF00A8C6E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7E5D03149FCFAF00A8C6E4 /* CoreGraphics.framework */; };
@@ -68,9 +72,16 @@
 		8FB34AED14A2816E005129B9 /* japan_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = japan_icon.png; sourceTree = "<group>"; };
 		8FB34AEE14A2816E005129B9 /* russia_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = russia_icon.png; sourceTree = "<group>"; };
 		8FB34AEF14A2816E005129B9 /* usa_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usa_icon.png; sourceTree = "<group>"; };
+		CB1036F114CE49EA00A5C711 /* GermanyStamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GermanyStamp.png; sourceTree = "<group>"; };
 		CB33EDAF14A264BF0011C5B1 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		CB33EDB014A264BF0011C5B1 /* TVOutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVOutManager.h; sourceTree = "<group>"; };
 		CB33EDB114A264BF0011C5B1 /* TVOutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVOutManager.m; sourceTree = "<group>"; };
+		CB3D04CE14D106C200ACE23E /* PlayableUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayableUnit.h; sourceTree = "<group>"; };
+		CB3D04CF14D106C200ACE23E /* PlayableUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayableUnit.m; sourceTree = "<group>"; };
+		CB3D04D114D1082700ACE23E /* InfantryUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfantryUnit.h; sourceTree = "<group>"; };
+		CB3D04D214D1082700ACE23E /* InfantryUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfantryUnit.m; sourceTree = "<group>"; };
+		CB3D04D414D11CFE00ACE23E /* PlacedUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacedUnit.h; sourceTree = "<group>"; };
+		CB3D04D514D11CFE00ACE23E /* PlacedUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacedUnit.m; sourceTree = "<group>"; };
 		CB7E5CFB149FCFAF00A8C6E4 /* AnA2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnA2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7E5CFF149FCFAF00A8C6E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CB7E5D01149FCFAF00A8C6E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -130,6 +141,7 @@
 		8F9980D114C35639001C1420 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CB3D04CC14D0FDC100ACE23E /* Units */,
 				8F9980D614C35762001C1420 /* Turn Stage Views */,
 				8F9980D514C356DC001C1420 /* Main View */,
 				8F9980D314C3564E001C1420 /* Data Model */,
@@ -203,8 +215,21 @@
 			children = (
 				CB33EDB014A264BF0011C5B1 /* TVOutManager.h */,
 				CB33EDB114A264BF0011C5B1 /* TVOutManager.m */,
+				CB3D04D414D11CFE00ACE23E /* PlacedUnit.h */,
+				CB3D04D514D11CFE00ACE23E /* PlacedUnit.m */,
 			);
 			name = TVOut;
+			sourceTree = "<group>";
+		};
+		CB3D04CC14D0FDC100ACE23E /* Units */ = {
+			isa = PBXGroup;
+			children = (
+				CB3D04CE14D106C200ACE23E /* PlayableUnit.h */,
+				CB3D04CF14D106C200ACE23E /* PlayableUnit.m */,
+				CB3D04D114D1082700ACE23E /* InfantryUnit.h */,
+				CB3D04D214D1082700ACE23E /* InfantryUnit.m */,
+			);
+			name = Units;
 			sourceTree = "<group>";
 		};
 		CB7E5CF0149FCFAE00A8C6E4 = {
@@ -284,6 +309,7 @@
 		CB8A19C614CC6E7E003C59FD /* units */ = {
 			isa = PBXGroup;
 			children = (
+				CB1036F114CE49EA00A5C711 /* GermanyStamp.png */,
 				CB8A19C714CC6E9C003C59FD /* carrier.png */,
 				CB8A19C814CC6E9C003C59FD /* tank.png */,
 				CB8A19C914CC6E9C003C59FD /* submarine.png */,
@@ -391,6 +417,7 @@
 				CB8A19DA14CC6E9C003C59FD /* battleship.png in Resources */,
 				CB8A19DB14CC6E9C003C59FD /* artillery.png in Resources */,
 				CB8A19DC14CC6E9C003C59FD /* transport.png in Resources */,
+				CB1036F214CE49EA00A5C711 /* GermanyStamp.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +458,9 @@
 				8F778C3E14A01D7400BBA0AA /* FactionViewController.m in Sources */,
 				CB33EDB314A264BF0011C5B1 /* TVOutManager.m in Sources */,
 				8F9980DD14C3583C001C1420 /* PurchaseView.m in Sources */,
+				CB3D04D014D106C200ACE23E /* PlayableUnit.m in Sources */,
+				CB3D04D314D1082700ACE23E /* InfantryUnit.m in Sources */,
+				CB3D04D614D11CFE00ACE23E /* PlacedUnit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

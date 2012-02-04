@@ -7,12 +7,23 @@
 //
 
 #import "FactionViewController.h"
+#import "TVOutManager.h"
 
 @implementation FactionViewController
 
+@synthesize tvButton;
 @synthesize factionNameLabel;
 @synthesize factionBackgroundImageView;
 @synthesize factionIcon;
+
+-(IBAction) tvSwitched {
+    [self tvOut];
+}
+
+-(void) tvOut {
+    if (tvButton.on) [[TVOutManager sharedInstance] startTVOut];
+	else [[TVOutManager sharedInstance] stopTVOut];
+}
 
 - (id)initWithFaction: (NSString *)factionName imageName:(NSString *)imageName{
     self = [super initWithNibName:@"FactionViewController" bundle:nil];

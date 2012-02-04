@@ -10,6 +10,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "TVOutManager.h"
+#import "InfantryUnit.h"
 
 #define kFPS 15
 #define kUseBackgroundThread	NO
@@ -56,6 +57,7 @@
 		// catch orientation notifications
 		[[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
 		[[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(deviceOrientationDidChange:) name: UIDeviceOrientationDidChangeNotification object: nil];		
+        placedUnits = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -87,7 +89,7 @@
 
 - (void) startTVOut
 {
-	// you need to have a main window already open when you call start
+    // you need to have a main window already open when you call start
 	if ([[UIApplication sharedApplication] keyWindow] == nil) return;
 	
 	NSArray* screens = [UIScreen screens];
@@ -143,10 +145,16 @@
         countryView = [[UIImageView alloc] initWithImage:countryImage];//initWithFrame: mirrorRect];
         [countryView setCenter:CGPointMake(30, 30)];
         
-        if (unitImage == NULL)
-            [self addUnit];
-        unitView = [[UIImageView alloc] initWithImage:unitImage];//initWithFrame: mirrorRect];
-        [unitView setCenter:CGPointMake(740, 590)];
+        int unitSize = 30;
+        UIImage* unitImage = [self getImageWithCount:@"infantry.png" :0];
+        for (int i = 0; i < 5; i++) {
+            unitView[i] = [[UIImageView alloc] initWithImage:unitImage];//initWithFrame: mirrorRect];
+            [unitView[i] setCenter:CGPointMake(740+(unitSize*i), 585)];
+        }
+        for (int i = 5; i < 10; i++) {
+            unitView[i] = [[UIImageView alloc] initWithImage:unitImage];//initWithFrame: mirrorRect];
+            [unitView[i] setCenter:CGPointMake(740+(unitSize*(i-5)), 585+unitSize)];
+        }
 		
         mirrorView.transform = CGAffineTransformScale(tvoutWindow.transform, bigScale, bigScale);
 		// TV safe area -- scale the window by 20% -- for composite / component, not needed for VGA output
@@ -155,12 +163,16 @@
         }
 		[tvoutWindow addSubview: mirrorView];
         [tvoutWindow addSubview: countryView];
-        [tvoutWindow addSubview: unitView];
+        for (int i = 0; i < 10; i++) {
+            [tvoutWindow addSubview: unitView[i]];
+            [unitView[i] setHidden:true];
+        }
         
 //		DELETED[mirrorView release];
         [tvoutWindow makeKeyAndVisible];
 		tvoutWindow.hidden = NO;		
 		tvoutWindow.backgroundColor = [UIColor blackColor];
+//        [tvoutWindow setAlpha:.2];
 		
 		// orient the view properly
 		if ([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft) {
@@ -194,42 +206,130 @@
     }
     countryImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:countryFile ofType:nil]];
     CGSize scaledCountrySize;
-    scaledCountrySize.width = 40;
-    scaledCountrySize.height = 40;
+    scaledCountrySize.width = 50;
+    scaledCountrySize.height = 50;
     countryImage = [self scaleImage: countryImage: scaledCountrySize];
 }
 
-- (void) addUnit {
-    NSString* countryFile = @"infantry.png";
-//    switch (country) {
-//        case Russia: countryFile = @"russia_icon.png";break;
-//        case Germany: countryFile = @"germany_icon.png";break;
-//        case Britain: countryFile = @"england_icon.png";break;
-//        case Japan: countryFile = @"japan_icon.png";break;
-//        case USA: countryFile = @"usa_icon.png";break;
-//    }
-    unitImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:countryFile ofType:nil]];
-    CGSize scaledCountrySize;
-    scaledCountrySize.width = 20;
-    scaledCountrySize.height = 20;
-    unitImage = [self scaleImage: unitImage: scaledCountrySize];
+- (UIImage*) drawNumberOnImage:(CGSize) scaledSize:(UIImage*) image:(CGFloat) count {
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef context = CGBitmapContextCreate(NULL, scaledSize.width, scaledSize.height, 8, 4 * scaledSize.height, colorSpace, kCGImageAlphaPremultipliedFirst);
+    CGContextDrawImage(context, CGRectMake(0, 0, scaledSize.width, scaledSize.height), image.CGImage);
+    CGContextSetRGBFillColor(context, 0.0, 0.0, 1.0, 1);
+    NSString *textToDraw = [NSString stringWithFormat:@"%d", (int) count];
+    NSString* largestString = @"99";
+    char* text	= (char *)[textToDraw cStringUsingEncoding:NSASCIIStringEncoding];// "05/05/09";
     
-//    CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);
-//    CGContextSetRGBFillColor(context, 0.0, 0.0, 1.0, 1);
-//	
-//    char* text	= (char *)[text1 cStringUsingEncoding:NSASCIIStringEncoding];// "05/05/09";
-//    CGContextSelectFont(context, "Arial", 18, kCGEncodingMacRoman);
-//    CGContextSetTextDrawingMode(context, kCGTextFill);
-//    CGContextSetRGBFillColor(context, 255, 255, 255, 1);
-//	
-//    
-//    //rotate text
-//    CGContextSetTextMatrix(context, CGAffineTransformMakeRotation( -M_PI/4 ));
-//	
-//    CGContextShowTextAtPoint(context, 4, 52, text, strlen(text));
-//	
-//	
-//    CGImageRef imageMasked = CGBitmapContextCreateImage(context);
+    CGContextSelectFont(context, "Arial-BoldMT", scaledSize.width/5, kCGEncodingMacRoman);
+    CGContextSetTextDrawingMode(context, kCGTextFill);
+    UIFont * drawingFont = [UIFont fontWithName:@"Arial-BoldMT" size:scaledSize.width/5];
+    CGSize drawingSize = [textToDraw sizeWithFont:drawingFont];
+    CGSize largestDrawingSize = [largestString sizeWithFont:drawingFont];
+    
+    CGFloat maxDrawingDimension = fmax(drawingSize.width, drawingSize.height);
+    CGFloat maxLargestDrawingDimension = fmax(largestDrawingSize.width, largestDrawingSize.height);
+    
+    CGContextSetRGBFillColor(context, 255, 0, 0, 1);
+    CGRect circleRect = CGRectMake(scaledSize.width-maxLargestDrawingDimension, scaledSize.width-maxLargestDrawingDimension,
+                                   maxLargestDrawingDimension,
+                                   maxLargestDrawingDimension);
+	circleRect = CGRectInset(circleRect, 0, 0);
+    
+	// draw circle
+	CGContextFillEllipseInRect(context, circleRect);
+    
+    CGContextSetRGBFillColor(context, 255, 255, 255, 1);
+    
+    //rotate text
+    //CGContextSetTextMatrix(context, CGAffineTransformMakeRotation( -M_PI/4 ));
+	
+    CGContextShowTextAtPoint(context, scaledSize.width-(maxDrawingDimension/2)-drawingSize.width/2, scaledSize.height-maxDrawingDimension/2-drawingSize.height*3/5/2, text, strlen(text));
+	
+	
+    CGImageRef imageMasked = CGBitmapContextCreateImage(context);
+    image = [UIImage imageWithCGImage:imageMasked];
+    
+    // free the context
+	UIGraphicsEndImageContext();
+    return image;
+}
+
+-(void) setUnitViewsVisible:(BOOL) visible {
+    for (int i=0; i < 10; i++) {
+        [unitView[i] setHidden:visible];
+    }
+}
+
+- (void) setPlacedUnits:(Unit) unitType: (int) count {
+    int numberOfPlacedUnits = [placedUnits count];
+    for (int i = 0; i < numberOfPlacedUnits; i++) {
+        PlacedUnit* placedUnit = [placedUnits objectAtIndex:i];
+        if ([placedUnit unitType] == unitType) {
+            if (count == 0) {
+                [placedUnits removeObjectAtIndex:i];
+                for (int i=0; i < numberOfPlacedUnits-1; i++) {
+                    [unitView[i] setHidden:false];            
+                }
+                for (int i=numberOfPlacedUnits-1; i<10; i++) {
+                    [unitView[i] setHidden:true];
+                }
+                return;
+            } else {
+                
+                NSString* fileName = [placedUnit getImageFileName];
+                UIImage* imageWithCount = [self getImageWithCount:fileName:count];
+                [placedUnit setImage:imageWithCount];
+                [placedUnit setCount:count];
+                return;
+            }
+        }
+    }
+    PlacedUnit* placedUnit = [[PlacedUnit alloc] initWithUnit:unitType];
+    NSString* fileName = [placedUnit getImageFileName];
+    UIImage* imageWithCount = [self getImageWithCount:fileName:count];
+    [placedUnit setImage:imageWithCount];
+    [placedUnit setCount:count];
+    [placedUnits addObject:placedUnit];
+    unitView[numberOfPlacedUnits].image = [placedUnit getImage];
+    for (int i=0; i < numberOfPlacedUnits+1; i++) {
+        [unitView[i] setHidden:false];
+    }
+    for (int i=numberOfPlacedUnits+1; i<10; i++) {
+        [unitView[i] setHidden:true];
+    }
+
+}
+
+- (UIImage*) getImageWithCount: (NSString*) fileName :(int) count {
+    int unitSize = 30;
+    UIImage* unitImage = NULL;
+    if (count <= 0) {
+//        [self setUnitViewsVisible:true];//*TODO have to set visibility properly
+        infantryCount = 0;
+        unitImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:fileName ofType:nil]];
+        CGSize scaledSize;
+        scaledSize.width = unitSize;
+        scaledSize.height = unitSize;
+        unitImage = [self scaleImage: unitImage: scaledSize];
+    } else if (count == 1) {
+//        [self setUnitViewsVisible:false];
+        infantryCount = count;
+        unitImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:fileName ofType:nil]];
+        CGSize scaledSize;
+        scaledSize.width = unitSize;
+        scaledSize.height = unitSize;
+        unitImage = [self scaleImage: unitImage: scaledSize];
+    } else {
+//        [self setUnitViewsVisible:false];
+        infantryCount = count;
+        unitImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:fileName ofType:nil]];
+        CGSize scaledSize;
+        scaledSize.width = unitSize;
+        scaledSize.height = unitSize;
+        unitImage = [self scaleImage: unitImage: scaledSize];
+        unitImage = [self drawNumberOnImage:scaledSize :unitImage :count];
+    }
+    return unitImage;
 }
 
 - (UIImage *) scaleImage: (UIImage *) image: (CGSize) newSize {
@@ -238,40 +338,6 @@
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
-}
-
-- (UIImage *)changeColor
-{
-    UIImage *temp23=[UIImage imageNamed:@"infantry.png"];
-    CGImageRef ref1=[self createMask:temp23];
-    const float colorMasking[6] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-    CGImageRef New=CGImageCreateWithMaskingColors(ref1, colorMasking);
-    UIImage *resultedimage=[UIImage imageWithCGImage:New];
-    return resultedimage;
-}
-
-- (CGImageRef)createMask:(UIImage*)temp
-{
-    CGImageRef ref=temp.CGImage;
-    int mWidth=CGImageGetWidth(ref);
-    int mHeight=CGImageGetHeight(ref);
-    int count=mWidth*mHeight*4;
-    void *bufferdata=malloc(count);
-    
-    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault;
-    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
-    
-    CGContextRef cgctx = CGBitmapContextCreate (bufferdata,mWidth,mHeight, 8,mWidth*4, colorSpaceRef, kCGImageAlphaPremultipliedFirst); 
-    
-    CGRect rect = {0,0,mWidth,mHeight};
-    CGContextDrawImage(cgctx, rect, ref); 
-    bufferdata = CGBitmapContextGetData (cgctx);
-    
-    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, bufferdata, mWidth*mHeight*4, NULL);
-    CGImageRef savedimageref = CGImageCreate(mWidth,mHeight, 8, 32, mWidth*4, colorSpaceRef, bitmapInfo,provider , NULL, NO, renderingIntent);
-    CFRelease(colorSpaceRef);
-    return savedimageref;
 }
 
 - (UIImage *)drawNumber:(UIImage *)image
@@ -361,7 +427,10 @@
 	UIGraphicsEndImageContext();
 	mirrorView.image = mapImage;
     countryView.image = countryImage;
-    unitView.image = unitImage;
+    int unitCount = [placedUnits count];
+    for (int i = 0; i < unitCount; i++) {
+        unitView[i].image = [((PlacedUnit*)[placedUnits objectAtIndex:i]) getImage];
+    }
 //    [mirrorView setCenter:CGPointMake(mirrorView.center.x+1, mirrorView.center.y)];
 
 #endif
