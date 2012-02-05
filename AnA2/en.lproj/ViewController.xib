@@ -51,14 +51,14 @@
 						<array key="IBUIItems">
 							<object class="IBUINavigationItem" id="1021982600">
 								<reference key="IBUINavigationBar" ref="185574436"/>
-								<string key="IBUITitle">Navigation is Fun</string>
+								<string key="IBUITitle">Russia</string>
 								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="414484063">
-									<string key="IBUITitle">Prev</string>
+									<string key="IBUITitle">USA</string>
 									<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 									<reference key="IBUINavigationItem" ref="1021982600"/>
 								</object>
 								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="53085096">
-									<string key="IBUITitle">Next</string>
+									<string key="IBUITitle">Purchase Units</string>
 									<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 									<int key="IBUIStyle">1</int>
 									<reference key="IBUINavigationItem" ref="1021982600"/>
@@ -161,6 +161,25 @@
 					<int key="connectionID">29</int>
 				</object>
 				<object class="IBConnectionRecord">
+<<<<<<< HEAD
+=======
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">tvButton</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="51306713"/>
+					</object>
+					<int key="connectionID">36</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">navBar</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="185574436"/>
+					</object>
+					<int key="connectionID">46</int>
+				</object>
+				<object class="IBConnectionRecord">
+>>>>>>> 1c6819390e4214287e2060d5981bdf8ffe9b77d3
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">changePage</string>
 						<reference key="source" ref="712130733"/>
@@ -280,7 +299,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">45</int>
+			<int key="maxID">46</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -299,12 +318,17 @@
 						</object>
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
+<<<<<<< HEAD
 						<string key="navNextButton">UIButton</string>
 						<string key="navPrevButton">UIButton</string>
+=======
+						<string key="navBar">UINavigationBar</string>
+>>>>>>> 1c6819390e4214287e2060d5981bdf8ffe9b77d3
 						<string key="pageControl">UIPageControl</string>
 						<string key="scrollView">UIScrollView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+<<<<<<< HEAD
 						<object class="IBToOneOutletInfo" key="navNextButton">
 							<string key="name">navNextButton</string>
 							<string key="candidateClassName">UIButton</string>
@@ -312,6 +336,11 @@
 						<object class="IBToOneOutletInfo" key="navPrevButton">
 							<string key="name">navPrevButton</string>
 							<string key="candidateClassName">UIButton</string>
+=======
+						<object class="IBToOneOutletInfo" key="navBar">
+							<string key="name">navBar</string>
+							<string key="candidateClassName">UINavigationBar</string>
+>>>>>>> 1c6819390e4214287e2060d5981bdf8ffe9b77d3
 						</object>
 						<object class="IBToOneOutletInfo" key="pageControl">
 							<string key="name">pageControl</string>
